@@ -5,12 +5,8 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent]
     }).compileComponents();
   }));
 
@@ -26,10 +22,19 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('hackflix');
   });
 
+  it('should have a property named cities of type array with 3 elements', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.categories).toBeTruthy();
+    expect(Array.isArray(app.cities)).toEqual(true);
+  });
+
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to hackflix!');
+    expect(compiled.querySelector('.title').textContent).toContain(
+      'Welcome to hackflix!'
+    );
   });
 });
