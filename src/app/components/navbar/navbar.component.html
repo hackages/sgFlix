@@ -8,7 +8,7 @@
             type="search"
             placeholder="title"
             #searchInput
-            (input)="search(searchInput.value)"
+            (input)="searchTerm$.next(searchInput.value)"
           />
         </div>
       </div>

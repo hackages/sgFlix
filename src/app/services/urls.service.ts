@@ -1,6 +1,10 @@
-import { InjectionToken } from '@angular/core';
+import { environment } from './../../environments/environment';
 
 export const SearchByTitleUrl = {
   provide: 'SearchByTitleUrl',
-  useValue: new InjectionToken('app/movies/?title=')
+  useValue: 'app/movies/?title='
+};
+export const MoviesUrl = {
+  provide: 'MoviesUrl',
+  useValue: environment.production ? '' : 'api/movies'
 };

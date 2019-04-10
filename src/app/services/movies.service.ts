@@ -1,3 +1,4 @@
+import { MoviesUrl } from './urls.service';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -5,13 +6,16 @@ import { IMovie } from 'src/types/movie.type';
 
 @Injectable()
 export class MoviesService {
-  moviesUrl = '/api/movies';
-
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(MoviesUrl.provide) private moviesUrl: string
+  ) {
+    console.log(this.moviesUrl);
+  }
 
   // Gets all the movies from our mock server
   getMovies(): Observable<IMovie[]> {
-    throw 'not implemented';
+    return this.http.get<IMovie[]>(this.moviesUrl);
   }
 
   // Gets a movie by its id from our mock server

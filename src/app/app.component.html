@@ -1,13 +1,13 @@
 <hf-header></hf-header>
 <main class="main-content">
   <hf-categories-menu
-    [count]="movies.length"
+    [count]="(movies$ | async).length"
     [switchCategory]="switchCategory"
-    [categories]="categories"
+    [categories]="categories$ | async"
   ></hf-categories-menu>
 
   <hf-movies-list
-    [movies]="movies"
+    [movies]="movies$ | async"
     [toggleNav]="toggleNav"
     [pictureUrl]="pictureUrl"
   >
@@ -16,6 +16,7 @@
   <hf-navbar
     [toggle]="toggle"
     [toggleNav]="toggleNav"
+    [searchTerm$]="searchTerm$"
     (searchEmitter)="search($event)"
   >
     ></hf-navbar

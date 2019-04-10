@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'hf-navbar',
@@ -8,6 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class NavbarComponent {
   @Input() toggleNav: boolean = false;
   @Input() toggle: Function;
+  @Input() searchTerm$: Subject<string>;
   @Output() searchEmitter: EventEmitter<string> = new EventEmitter();
 
   search(value: string) {

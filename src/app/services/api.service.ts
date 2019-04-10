@@ -8,6 +8,6 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let movies: IMovie[] = mockMovies;
     let categories: ICategory[] = mockCategories;
-    return { movies, categories };
+    return { movies, categories }; // 'api/movies'
   }
 }
