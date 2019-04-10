@@ -35,7 +35,7 @@ This application is not working. After what you've learned so far, you should be
 
 #### 3.2 Movies
 
-- Implement the `filterMovies` method.
+- Implement the `filterMovies` method. It takes no argument and filters the movies by they category
 
 #### 3.3 Sidebar
 
@@ -49,14 +49,18 @@ Now that our application is working, let's split it into smaller components:
 Let's create these 3 components:
 
 - `<hf-header></hf-header>`
+- `<hf-categories-menu></hf-categories-menu>`
+- `<hf-category-item></hf-category-item>`
 - `<hf-counter></hf-counter>`
 - `<hf-movies-list></b-movies-list>`
 - `<hf-movie></hf-movie>`
+- `<hf-navbar></hf-navbar>`
 
 **Key learning points:**
 
 - Binding syntax in Angular
 - Building your first components
+- Using the CLI to build components, pipes...
 - Communication between components
 
 ---
