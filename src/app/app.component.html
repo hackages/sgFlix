@@ -1,56 +1,23 @@
-<header>
-  <img src="../assets/images/hackflix_logo.svg" alt="logo" />
-</header>
+<hf-header></hf-header>
 <main class="main-content">
-  <div class="tab-filter-wrapper">
-    <div class="tab-filter">
-      <div class="filters">
-        <ul class="filters-list">
-          <li
-            *ngFor="let category of categories"
-            (click)="switchCategory(category.name)"
-          >
-            <a [class.selected]="category.selected">
-              {{ category.name }}
-            </a>
-          </li>
-        </ul>
-        <ul class="misc">
-          <li class="counter">
-            <a>{{ movies.length }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <hf-categories-menu
+    [count]="movies.length"
+    [switchCategory]="switchCategory"
+    [categories]="categories"
+  ></hf-categories-menu>
 
-  <section class="gallery" [class.filter-is-visible]="toggleNav">
-    <div *ngFor="let movie of movies" class="movie">
-      <img
-        [alt]="movie.title"
-        src="{{ PICTURES_CDN_URL + movie.poster_path }}"
-      />
-    </div>
-  </section>
+  <hf-movies-list
+    [movies]="movies"
+    [toggleNav]="toggleNav"
+    [pictureUrl]="pictureUrl"
+  >
+  </hf-movies-list>
 
-  <div>
-    <div class="filter" [class.filter-is-visible]="toggleNav">
-      <form>
-        <div class="filter-block">
-          <h4>Search</h4>
-          <div class="filter-content">
-            <input
-              type="search"
-              placeholder="title"
-              #searchInput
-              (input)="search(searchInput.value)"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-    <a class="hand-cursor filter-trigger" (click)="toggle()">
-      {{ !toggleNav ? 'Open Filters' : 'Close Filters' }}
-    </a>
-  </div>
+  <hf-navbar
+    [toggle]="toggle"
+    [toggleNav]="toggleNav"
+    (searchEmitter)="search($event)"
+  >
+    ></hf-navbar
+  >
 </main>

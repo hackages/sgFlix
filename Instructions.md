@@ -46,7 +46,7 @@ This application is not working. After what you've learned so far, you should be
 
 Now that our application is working, let's split it into smaller components:
 
-Let's create these 3 components:
+Let's create these n components:
 
 - `<hf-header></hf-header>`
 - `<hf-categories-menu></hf-categories-menu>`

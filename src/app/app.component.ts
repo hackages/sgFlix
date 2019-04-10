@@ -1,13 +1,12 @@
+import { categories } from 'src/mocks/categories';
 import { Component } from '@angular/core';
-import { categories } from '../mocks/categories';
-import { movies } from '../mocks/movies';
 import { PICTURES_CDN_URL } from '../constants/urls';
-import { getGenreId, movieContainsGenre } from 'src/utils';
+import { filterByCategory, filterByTitle } from 'src/utils';
+import { movies } from 'src/mocks/movies';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   categories = categories;
@@ -15,7 +14,7 @@ export class AppComponent {
   toggleNav = false;
   currentCategory = 'All';
   searchTerm = '';
-  PICTURES_CDN_URL = PICTURES_CDN_URL;
+  pictureUrl = PICTURES_CDN_URL;
 
   switchCategory = (categoryName: string): void => {
     this.currentCategory = categoryName;
@@ -31,13 +30,12 @@ export class AppComponent {
   toggle = () => (this.toggleNav = !this.toggleNav);
 
   filterMovies = () => {
-    this.movies = movies.filter(
-      movie =>
-        (this.currentCategory === 'All' ||
-          movieContainsGenre(movie, getGenreId(this.currentCategory))) &&
-        (!this.searchTerm ||
-          movie.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
-    );
+    this.movies = movies.filter(movie => {
+      return (
+        filterByCategory(movie, this.currentCategory) &&
+        filterByTitle(movie, this.searchTerm)
+      );
+    });
   };
 
   search = (searchTerm: string) => {

@@ -31,3 +31,16 @@ export const filterMoviesByCat = (
   movies: IMovie[],
   genre_id: number
 ): IMovie[] => movies.filter(movie => movieContainsGenre(movie, genre_id));
+
+export function filterByCategory(movie: IMovie, currentCategory: string) {
+  return (
+    currentCategory === 'All' ||
+    movieContainsGenre(movie, getGenreId(currentCategory))
+  );
+}
+
+export function filterByTitle(movie: IMovie, searchTerm: string) {
+  return (
+    !searchTerm || movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+}
