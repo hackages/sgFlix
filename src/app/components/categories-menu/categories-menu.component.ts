@@ -8,6 +8,6 @@ import { ICategory } from 'src/types/category.type';
 })
 export class CategoriesMenuComponent {
   @Input() categories: ICategory[] = [];
-  @Input() switchCategory: Function;
+  @Input() switchCategory: Function = () => {};
   @Input() count: number = 0;
 }
